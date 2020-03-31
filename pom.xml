@@ -10,30 +10,33 @@
 
     <properties>
         <!-- Plugin Versions -->
-        <scala.sub.version>8</scala.sub.version>
-        <scala.version>2.11</scala.version>
-        <scala.test.version>3.1.0</scala.test.version>
+        <scala-sub-version>8</scala-sub-version>
+        <scala-version>2.11</scala-version>
+        <scala-test-version>3.1.0</scala-test-version>
         <scala-maven-plugin-version>4.3.1</scala-maven-plugin-version>
         <scalatest-maven-plugin-version>2.0.0</scalatest-maven-plugin-version>
         <maven-compiler-plugin-version>3.1</maven-compiler-plugin-version>
         <java-version>1.8</java-version>
         <maven-surefire-plugin-version>2.12.4</maven-surefire-plugin-version>
-        <maven.assembly.plugin.version>3.1.0</maven.assembly.plugin.version>
+        <maven-assembly-plugin-version>3.1.0</maven-assembly-plugin-version>
+        <scoverage-scoverage-plugin-version>1.4.1</scoverage-scoverage-plugin-version>
+        <project-info-reports.plugin.version>3.0.0</project-info-reports.plugin.version>
+        <scoverage-scoverage-minimumCoverage>80</scoverage-scoverage-minimumCoverage>
     </properties>
 
     <dependencies>
         <!-- tests -->
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_${scala.version}</artifactId>
-            <version>${scala.test.version}</version>
+            <artifactId>scalatest_${scala-version}</artifactId>
+            <version>${scala-test-version}</version>
             <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.scala-lang/scala-library -->
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>${scala.version}.${scala.sub.version}</version>
+            <version>${scala-version}.${scala-sub-version}</version>
         </dependency>
     </dependencies>
     <build>
@@ -94,14 +97,15 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>${maven.assembly.plugin.version}</version>
+                <version>${maven-assembly-plugin-version}</version>
                 <configuration>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef> <!-- get the jar with dependencies -->
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>com.gability.labs.cicd</mainClass> <!-- to inform the jar where is the main class demo the manifest without -->
+                            <mainClass>com.gability.labs.cicd
+                            </mainClass> <!-- to inform the jar where is the main class demo the manifest without -->
                         </manifest>
                     </archive>
                     <appendAssemblyId>false</appendAssemblyId> <!-- to remove the descriptor from jar name -->
@@ -115,8 +119,51 @@
                     </execution>
                 </executions>
             </plugin>
-
+            <plugin>
+                <groupId>org.scoverage</groupId>
+                <artifactId>scoverage-maven-plugin</artifactId>
+                <version>${scoverage-scoverage-plugin-version}</version>
+                <configuration>
+                    <highlighting>true</highlighting>
+                    <minimumCoverage>80</minimumCoverage>
+                    <failOnMinimumCoverage>true</failOnMinimumCoverage>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${project-info-reports.plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.scoverage</groupId>
+                <artifactId>scoverage-maven-plugin</artifactId>
+                <version>${scoverage-scoverage-plugin-version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>

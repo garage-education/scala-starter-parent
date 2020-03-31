@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e995ef1-3841-4869-9784-e8f9dae8429e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/gability/labs/cicd/Main.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/scala/com/gability/labs/cicd/MainTest.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
@@ -51,15 +48,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="add_unversioned_files" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/scala/com/gability/labs/cicd" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="M:\Learning\Master\CombinedWorkspace\Scala\ScalaDemoTemplate" />
       <recent name="M:\Learning\Master\CombinedWorkspace\Scala\ScalaDemoTemplate\src\test\scala\com\gability\labs\cicd" />
       <recent name="M:\Learning\Master\CombinedWorkspace\Scala\ScalaDemoTemplate\src\main\scala\com\gability\labs\cicd" />
     </key>
@@ -139,6 +136,30 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="724" y="494" key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog/0.0.1920.1160@0.0.1920.1160" timestamp="1585694226955" />
+    <state x="740" y="335" key="FileChooserDialogImpl" timestamp="1585695067252">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="740" y="335" key="FileChooserDialogImpl/0.0.1920.1160@0.0.1920.1160" timestamp="1585695067252" />
+    <state width="1877" height="392" key="GridCell.Tab.0.bottom" timestamp="1585695093031">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1877" height="392" key="GridCell.Tab.0.bottom/0.0.1920.1160@0.0.1920.1160" timestamp="1585695093030" />
+    <state width="1877" height="392" key="GridCell.Tab.0.center" timestamp="1585695093030">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1877" height="392" key="GridCell.Tab.0.center/0.0.1920.1160@0.0.1920.1160" timestamp="1585695093030" />
+    <state width="1877" height="392" key="GridCell.Tab.0.left" timestamp="1585695093029">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1877" height="392" key="GridCell.Tab.0.left/0.0.1920.1160@0.0.1920.1160" timestamp="1585695093029" />
+    <state width="1877" height="392" key="GridCell.Tab.0.right" timestamp="1585695093030">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1877" height="392" key="GridCell.Tab.0.right/0.0.1920.1160@0.0.1920.1160" timestamp="1585695093030" />
+    <state x="461" y="222" key="SettingsEditor" timestamp="1585695088382">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="461" y="222" key="SettingsEditor/0.0.1920.1160@0.0.1920.1160" timestamp="1585695088382" />
     <state x="656" y="404" key="com.intellij.ide.util.TipDialog" timestamp="1585683936770">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
