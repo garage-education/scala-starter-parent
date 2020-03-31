@@ -56,7 +56,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <!-- maven plugin for scala testing engine -->
             <plugin>
                 <!-- https://mvnrepository.com/artifact/org.scalatest/scalatest-maven-plugin -->
