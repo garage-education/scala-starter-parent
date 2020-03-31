@@ -15,6 +15,8 @@
         <scala.test.version>3.1.0</scala.test.version>
         <scala-maven-plugin-version>4.3.1</scala-maven-plugin-version>
         <scalatest-maven-plugin-version>2.0.0</scalatest-maven-plugin-version>
+        <maven-compiler-plugin-version>3.1</maven-compiler-plugin-version>
+        <java-version>1.8</java-version>
     </properties>
 
     <dependencies>
@@ -64,6 +66,20 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--Skip java compilation for main and test-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin-version}</version>
+                <configuration>
+                    <source>${java-version}</source>
+                    <target>${java-version}</target>
+                    <skipMain>true</skipMain> <!-- skip java compile -->
+                    <skip>true</skip> <!-- skip java testCompile -->
+                </configuration>
+            </plugin>
+            
+
 
         </plugins>
     </build>
