@@ -92,7 +92,6 @@
                     <skipTests>true</skipTests>  <!-- skip java unit testing -->
                 </configuration>
             </plugin>
-
             <!-- Maven Assembly for building Jar With Dependencies -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -119,6 +118,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Maven scoverage plugin -->
             <plugin>
                 <groupId>org.scoverage</groupId>
                 <artifactId>scoverage-maven-plugin</artifactId>
