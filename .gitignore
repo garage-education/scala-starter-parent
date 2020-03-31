@@ -16,12 +16,8 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
-### JetBrains template
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
-# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
-
 # User-specific stuff
-.idea/
+.idea/*.xml
 
 # CMake
 cmake-build-*/
@@ -34,3 +30,11 @@ out/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
+!/.idea/
+!/.idea/workspace.xml
+!/.idea/qaplug_profiles.xml
+!/.idea/misc.xml
+!/.idea/encodings.xml
+!/.idea/compiler.xml
+!/.idea/codeStyles/
+!/.idea/$PROJECT_FILE$
