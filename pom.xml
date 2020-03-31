@@ -29,6 +29,25 @@
             <artifactId>scala-library</artifactId>
             <version>${scala.version}.${scala.sub.version}</version>
         </dependency>
-
     </dependencies>
+    <build>
+        <plugins>
+            <!-- maven plugin for scala compiler -->
+            <plugin>
+                <!-- https://mvnrepository.com/artifact/net.alchim31.maven/scala-maven-plugin -->
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>${scala-maven-plugin-version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
