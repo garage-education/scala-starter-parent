@@ -17,7 +17,7 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 # User-specific stuff
-.idea/*.xml
+.idea
 
 # CMake
 cmake-build-*/
@@ -28,13 +28,3 @@ cmake-build-*/
 # IntelliJ
 out/
 
-# mpeltonen/sbt-idea plugin
-.idea_modules/
-!/.idea/
-!/.idea/workspace.xml
-!/.idea/qaplug_profiles.xml
-!/.idea/misc.xml
-!/.idea/encodings.xml
-!/.idea/compiler.xml
-!/.idea/codeStyles/
-!/.idea/$PROJECT_FILE$

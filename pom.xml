@@ -40,6 +40,8 @@
         </dependency>
     </dependencies>
     <build>
+        <sourceDirectory>${basedir}/src/main/scala</sourceDirectory>
+        <testSourceDirectory>${basedir}/src/test/scala</testSourceDirectory>
         <plugins>
             <!-- maven plugin for scala compiler -->
             <plugin>
