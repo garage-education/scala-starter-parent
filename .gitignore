@@ -16,8 +16,10 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
-# User-specific stuff
+# Jetbrains stuff
 .idea
+*.iml
+out/
 
 # CMake
 cmake-build-*/
@@ -25,6 +27,5 @@ cmake-build-*/
 # File-based project format
 *.iws
 
-# IntelliJ
-out/
-
+# OS Stuff
+.DS_Store
