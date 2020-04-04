@@ -9,34 +9,39 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <!-- Plugin Versions -->
-        <scala-sub-version>8</scala-sub-version>
+        <!-- Project Dependencies -->
         <scala-version>2.11</scala-version>
+        <scala-sub-version>8</scala-sub-version>
         <scala-test-version>3.1.0</scala-test-version>
+        <!-- Plugin Versions -->
         <scala-maven-plugin-version>4.3.1</scala-maven-plugin-version>
         <scalatest-maven-plugin-version>2.0.0</scalatest-maven-plugin-version>
-        <maven-compiler-plugin-version>3.1</maven-compiler-plugin-version>
-        <java-version>1.8</java-version>
-        <maven-surefire-plugin-version>2.12.4</maven-surefire-plugin-version>
-        <maven-assembly-plugin-version>3.1.0</maven-assembly-plugin-version>
         <scoverage-plugin-version>1.4.1</scoverage-plugin-version>
         <project-info-reports.plugin.version>3.0.0</project-info-reports.plugin.version>
         <scoverage-scoverage-minimumCoverage>80</scoverage-scoverage-minimumCoverage>
+        <!-- Maven properties -->
+        <java-version>1.8</java-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- Maven plugins -->
+        <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
+        <maven-surefire-plugin-version>3.0.0-M4</maven-surefire-plugin-version>
+        <maven-assembly-plugin-version>3.2.0</maven-assembly-plugin-version>
     </properties>
 
     <dependencies>
+        <!-- Scala Compiler -->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala-version}.${scala-sub-version}</version>
+        </dependency>
         <!-- tests -->
         <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_${scala-version}</artifactId>
             <version>${scala-test-version}</version>
             <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.scala-lang/scala-library -->
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>${scala-version}.${scala-sub-version}</version>
         </dependency>
     </dependencies>
     <build>
@@ -64,8 +69,14 @@
                 <groupId>org.scalatest</groupId>
                 <artifactId>scalatest-maven-plugin</artifactId>
                 <version>${scalatest-maven-plugin-version}</version>
+                <configuration>
+                    <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                    <junitxml>.</junitxml>
+                    <filereports>WDF TestSuite.txt</filereports>
+                </configuration>
                 <executions>
                     <execution>
+                        <id>test</id>
                         <goals>
                             <goal>test</goal>
                         </goals>
@@ -104,8 +115,8 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>com.gability.labs.cicd
-                            </mainClass> <!-- to inform the jar where is the main class demo the manifest without -->
+                            <!-- to inform the jar where is the main class demo the manifest without -->
+                            <mainClass>com.gability.labs.cicd</mainClass>
                         </manifest>
                     </archive>
                     <appendAssemblyId>false</appendAssemblyId> <!-- to remove the descriptor from jar name -->
@@ -119,7 +130,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Maven scoverage plugin -->
+            <!-- Maven scala coverage plugin -->
             <plugin>
                 <groupId>org.scoverage</groupId>
                 <artifactId>scoverage-maven-plugin</artifactId>
@@ -137,10 +148,20 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.9.0</version>
+            </plugin>
         </plugins>
     </build>
     <reporting>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${maven-surefire-plugin-version}</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
