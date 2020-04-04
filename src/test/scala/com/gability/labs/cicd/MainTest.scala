@@ -1,8 +1,8 @@
 package com.gability.labs.cicd
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
-class MainTest extends FunSuite  {
+class MainTest extends AnyFunSuite  {
 
   test("Test wordCount Function with input string") {
     val inputSentence = "Testing Word Count Func"
