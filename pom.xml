@@ -21,6 +21,7 @@
         <scoverage-scoverage-minimumCoverage>80</scoverage-scoverage-minimumCoverage>
         <!-- Maven properties -->
         <java-version>1.8</java-version>
+        <skipTests>true</skipTests><!-- Skip Scala Unit Tests-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- Maven plugins -->
@@ -139,6 +140,7 @@
                     <highlighting>true</highlighting>
                     <minimumCoverage>80</minimumCoverage>
                     <failOnMinimumCoverage>true</failOnMinimumCoverage>
+                    <additionalForkedProjectProperties>skipTests=false</additionalForkedProjectProperties>
                 </configuration>
                 <executions>
                     <execution>
