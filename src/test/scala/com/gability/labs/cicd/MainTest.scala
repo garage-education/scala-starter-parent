@@ -1,16 +1,16 @@
 package com.gability.labs.cicd
 
+import com.gability.labs.cicd.Utils._
 import org.scalatest.funsuite.AnyFunSuite
 
-class MainTest extends AnyFunSuite  {
-
+class MainTest extends AnyFunSuite {
   test("Test wordCount Function with input string") {
     val inputSentence = "Testing Word Count Func"
-    assert(Main.workCount(inputSentence) == 4)
+    assert(workCount(inputSentence) == 4)
   }
-
-  test("Test wordCount Function with null input") {
+  // commented for testing some scenarios to break the test coverage.
+  /*  test("Test wordCount Function with null input") {
     val inputSentence = null
-    assert(Main.workCount(inputSentence) == 0)
-  }
+    assert(workCount(inputSentence) == 0)
+  }*/
 }

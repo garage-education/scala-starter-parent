@@ -3,25 +3,12 @@ package com.gability.labs.cicd
 /**
  * The main object for our application.
  */
-object Main extends App {
+object Main {
 
-  /**
-   * This function counts the words in a given string.
-   * @param s represents the input string we are going t count its words.
-   * @return integer representing the word count in the input string.
-   */
-  def workCount(s:String): Int = {
-    s match {
-      case str if isEmpty(str) => 0
-      case str => str.split("\\W+").length
-    }
+  def main(args: Array[String]): Unit = {
+    println(Utils.workCount("Moustafa Alaa Test Utils"))
   }
 
-  /**
-   * This function checks if the input string is not null or empty.
-   * @param x represents the input string we are going to check.
-   * @return true if the input string is null or empty otherwise returns false.
-   */
-  def isEmpty(x: String) = x == null || x.trim.isEmpty
+
 }
 
