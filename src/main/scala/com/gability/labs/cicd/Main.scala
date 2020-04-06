@@ -1,14 +1,11 @@
 package com.gability.labs.cicd
 
 /**
- * The main object for our application.
- */
+  * The main object for our application.
+  */
 object Main {
 
   def main(args: Array[String]): Unit = {
-    println(Utils.workCount("Moustafa Alaa Test Utils"))
+    println(Utils.workCount("Print Work Count"))
   }
-
-
 }
-
