@@ -1,7 +1,7 @@
 # CICD Development Process (Scala Maven Example) 
 
 ## Project Strcuture and Initial Code
-*INSERT AN IMAGE FROM IDEA*
+
 
 ```
 .
