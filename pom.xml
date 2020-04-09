@@ -23,7 +23,7 @@
         <scalastyle-maven-plugin-version>1.0.0</scalastyle-maven-plugin-version>
         <!-- Maven properties -->
         <java-version>1.8</java-version>
-        <!--<skipTests>true</skipTests>&lt;!&ndash; Skip Scala Unit Tests &ndash;&gt;-->
+        <skipTests>true</skipTests><!-- Skip Scala Unit Tests -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- Maven plugins -->
