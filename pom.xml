@@ -13,7 +13,9 @@
         <url>https://github.com/moustafaalaa/ScalaSandbox.git</url>
         <tag>1.0.0</tag>
     </scm>
+
     <properties>
+        <project.scm.id>MAlaa</project.scm.id>
         <!-- Project Dependencies -->
         <scala-version>2.11</scala-version>
         <scala-sub-version>8</scala-sub-version>
