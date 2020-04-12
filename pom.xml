@@ -16,7 +16,7 @@
     </scm>
 
     <properties>
-<!--        <project.scm.id>MAlaa</project.scm.id>-->
+        <scoverage-minimumCoverage>80</scoverage-minimumCoverage>
         <!-- Project Dependencies -->
         <scala-version>2.11</scala-version>
         <scala-sub-version>8</scala-sub-version>
@@ -25,7 +25,6 @@
         <scala-maven-plugin-version>4.3.1</scala-maven-plugin-version>
         <scalatest-maven-plugin-version>2.0.0</scalatest-maven-plugin-version>
         <scoverage-plugin-version>1.4.1</scoverage-plugin-version>
-        <project-info-reports.plugin.version>3.0.0</project-info-reports.plugin.version>
         <scoverage-scoverage-minimumCoverage>80</scoverage-scoverage-minimumCoverage>
         <findbugs-maven-plugin-version>3.0.5</findbugs-maven-plugin-version>
         <scalastyle-maven-plugin-version>1.0.0</scalastyle-maven-plugin-version>
@@ -38,6 +37,9 @@
         <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
         <maven-surefire-plugin-version>3.0.0-M4</maven-surefire-plugin-version>
         <maven-assembly-plugin-version>3.2.0</maven-assembly-plugin-version>
+        <maven-site-plugin-version>3.9.0</maven-site-plugin-version>
+        <maven-release-plugin-version>2.5.3</maven-release-plugin-version>
+        <project-info-reports.plugin.version>3.0.0</project-info-reports.plugin.version>
     </properties>
 
     <dependencies>
@@ -128,7 +130,7 @@
                     <archive>
                         <manifest>
                             <!-- to inform the jar where is the main class demo the manifest without -->
-                            <mainClass>com.gability.labs.cicd</mainClass>
+                            <mainClass>com.gability.labs.cicd.Main</mainClass>
                         </manifest>
                     </archive>
                     <appendAssemblyId>false</appendAssemblyId> <!-- to remove the descriptor from jar name -->
@@ -149,7 +151,7 @@
                 <version>${scoverage-plugin-version}</version>
                 <configuration>
                     <highlighting>true</highlighting>
-                    <minimumCoverage>80</minimumCoverage>
+                    <minimumCoverage>${scoverage-minimumCoverage}</minimumCoverage>
                     <failOnMinimumCoverage>true</failOnMinimumCoverage>
                     <additionalForkedProjectProperties>skipTests=false</additionalForkedProjectProperties>
                 </configuration>
@@ -158,7 +160,7 @@
                         <goals>
                             <goal>check</goal>
                         </goals>
-                        <phase>site</phase> <!-- or any other phase -->
+                        <phase>package</phase> <!-- must bind to a phase -->
                     </execution>
                 </executions>
             </plugin>
@@ -179,7 +181,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--scalastyle-maven-plugin-->
+            <!-- Scala Style-maven-plugin-->
             <plugin>
                 <groupId>org.scalastyle</groupId>
                 <artifactId>scalastyle-maven-plugin</artifactId>
@@ -215,15 +217,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.9.0</version>
-                <configuration>
-                </configuration>
+                <version>${maven-site-plugin-version}</version>
             </plugin>
             <!-- Maven release plugin-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
+                <version>${maven-release-plugin-version}</version>
                 <configuration>
                     <pomFileName>ScalaSandbox/pom.xml</pomFileName>
                 </configuration>
@@ -244,7 +244,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>${project-info-reports.plugin.version}</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -256,21 +255,25 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>${maven-surefire-plugin-version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report-only</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
-                <version>${scala-maven-plugin-version}</version>
             </plugin>
             <plugin>
                 <groupId>org.scoverage</groupId>
                 <artifactId>scoverage-maven-plugin</artifactId>
-                <version>${scoverage-plugin-version}</version>
                 <reportSets>
                     <reportSet>
                         <reports>
-                            <report>report</report>
+                            <report>report-only</report>
                         </reports>
                     </reportSet>
                 </reportSets>
@@ -278,7 +281,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
-                <version>${findbugs-maven-plugin-version}</version>
             </plugin>
         </plugins>
     </reporting>
