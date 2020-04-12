@@ -193,8 +193,7 @@
                     <failOnWarning>false</failOnWarning>
                     <sourceDirectory>${project.basedir}/src/main/scala</sourceDirectory>
                     <testSourceDirectory>${project.basedir}/src/test/scala</testSourceDirectory>
-                    <!--<outputFile>${project.build.directory}/scalastyle-output.xml</outputFile>-->
-                    <outputFile>${project.build.directory}/checkstyle-output.xml</outputFile>
+                    <outputFile>${project.build.directory}/checkstyle-result.xml</outputFile>
                     <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
                     <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
                 </configuration>
