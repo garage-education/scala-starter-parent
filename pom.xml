@@ -6,6 +6,8 @@
     <groupId>com.gability</groupId>
     <artifactId>ScalaSandbox</artifactId>
     <version>1.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
     <scm>
         <connection>scm:git:https://github.com/moustafaalaa/ScalaSandbox.git</connection>
         <developerConnection>scm:git:https://github.com/moustafaalaa/ScalaSandbox.git</developerConnection>
@@ -242,7 +244,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>${project-info-reports.plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
