@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gability</groupId>
@@ -8,8 +9,8 @@
     <scm>
         <connection>scm:git:https://github.com/moustafaalaa/ScalaSandbox.git</connection>
         <developerConnection>scm:git:https://github.com/moustafaalaa/ScalaSandbox.git</developerConnection>
-        <url>https://github.com/moustafaalaa/ScalaSandbox.git</url>
-        <tag>1.0.0</tag>
+        <url>https://github.com/moustafaalaa/ScalaSandbox</url>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>
@@ -217,15 +218,12 @@
                 </configuration>
             </plugin>
             <!-- Maven release plugin-->
-            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-release-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.5.3</version>
                 <configuration>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <tagNameFormat>@{project.version}</tagNameFormat>
-                    <releaseProfiles>release</releaseProfiles>
+                    <pomFileName>ScalaSandbox/pom.xml</pomFileName>
                 </configuration>
                 <executions>
                     <execution>
@@ -239,40 +237,40 @@
         </plugins>
     </build>
 
-        <reporting>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>3.0.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>${maven-surefire-plugin-version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>net.alchim31.maven</groupId>
-                    <artifactId>scala-maven-plugin</artifactId>
-                    <version>${scala-maven-plugin-version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.scoverage</groupId>
-                    <artifactId>scoverage-maven-plugin</artifactId>
-                    <version>${scoverage-plugin-version}</version>
-                    <reportSets>
-                        <reportSet>
-                            <reports>
-                                <report>report</report>
-                            </reports>
-                        </reportSet>
-                    </reportSets>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>findbugs-maven-plugin</artifactId>
-                    <version>${findbugs-maven-plugin-version}</version>
-                </plugin>
-            </plugins>
-        </reporting>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${maven-surefire-plugin-version}</version>
+            </plugin>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>${scala-maven-plugin-version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.scoverage</groupId>
+                <artifactId>scoverage-maven-plugin</artifactId>
+                <version>${scoverage-plugin-version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${findbugs-maven-plugin-version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
