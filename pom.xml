@@ -7,7 +7,12 @@
     <groupId>com.gability</groupId>
     <artifactId>ScalaSandbox</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <scm>
+        <connection>scm:git:https://github.com/moustafaalaa/ScalaSandbox.git</connection>
+        <developerConnection>scm:git:https://github.com/moustafaalaa/ScalaSandbox.git</developerConnection>
+        <url>https://github.com/moustafaalaa/ScalaSandbox.git</url>
+        <tag>1.0.0</tag>
+    </scm>
     <properties>
         <!-- Project Dependencies -->
         <scala-version>2.11</scala-version>
@@ -203,36 +208,49 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <!-- Maven Reporting Site plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.9.0</version>
+                <configuration>
+                </configuration>
+            </plugin>
+            <!-- Maven release plugin-->
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-release-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+                    <releaseProfiles>release</releaseProfiles>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>perform</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
-            <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-site-plugin</artifactId>
-            <version>3.3</version>
-            <configuration>
-            <reportPlugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.2</version>
-                <reports>
-                    <report>index</report>
-                    <report>project-team</report>
-                    <report>license</report>
-                    <report>mailing-list</report>
-                    <report>dependencies</report>
-                    <report>dependency-convergence</report>
-                    <report>plugin-management</report>
-                    <report>cim</report>
-                    <report>issue-tracking</report>
-                    <report>scm</report>
-                    <report>summary</report>
-                </reports>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>${maven-surefire-plugin-version}</version>
-            </plugin>
+        <reporting>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-report-plugin</artifactId>
+                    <version>${maven-surefire-plugin-version}</version>
+                </plugin>
                 <plugin>
                     <groupId>net.alchim31.maven</groupId>
                     <artifactId>scala-maven-plugin</artifactId>
@@ -255,9 +273,6 @@
                     <artifactId>findbugs-maven-plugin</artifactId>
                     <version>${findbugs-maven-plugin-version}</version>
                 </plugin>
-            </reportPlugins>
-            </configuration>
-            </plugin>
-        </plugins>
-    </build>
+            </plugins>
+        </reporting>
 </project>
