@@ -11,7 +11,7 @@ object Main extends App {
     * @param s represents the input string we are going t count its words.
     * @return integer representing the word count in the input string.
     */
-  def workCount(s: String): Int = {
+  def wordCount(s: String): Int = {
     s match {
       case str if isEmpty(str) => 0
       case str                 => str.split("\\W+").length
