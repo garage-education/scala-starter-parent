@@ -4,14 +4,14 @@
 
     <groupId>com.gability</groupId>
     <artifactId>ScalaSandbox</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2</version>
     <packaging>pom</packaging>
 
     <scm>
         <connection>scm:git:https://github.com/moustafaalaa/ScalaSandbox.git</connection>
         <developerConnection>scm:git:https://github.com/moustafaalaa/ScalaSandbox.git</developerConnection>
         <url>https://github.com/moustafaalaa/ScalaSandbox</url>
-        <tag>HEAD</tag>
+        <tag>ScalaSandbox-1.2</tag>
     </scm>
 
     <properties>
