@@ -30,7 +30,7 @@
         <connection>scm:git:https://github.com/moustafaalaa/ScalaSandbox.git</connection>
         <developerConnection>scm:git:https://github.com/moustafaalaa/ScalaSandbox.git</developerConnection>
         <url>https://github.com/moustafaalaa/ScalaSandbox</url>
-        <tag>HEAD</tag>
+        <tag>release</tag>
     </scm>
 
     <properties>
