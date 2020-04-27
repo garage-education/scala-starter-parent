@@ -4,7 +4,7 @@
 
     <groupId>com.gability</groupId>
     <artifactId>ScalaSandbox</artifactId>
-    <version>1.7-SNAPSHOT</version>
+    <version>1.8-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <distributionManagement>
