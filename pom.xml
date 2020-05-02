@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.gability</groupId>
-    <artifactId>ScalaSandbox</artifactId>
+    <groupId>com.gability.scala</groupId>
+    <artifactId>scala-starter-parent</artifactId>
     <version>1.13-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -26,16 +26,16 @@
     </distributionManagement>
 
     <scm>
-        <connection>scm:git:https://github.com/moustafaalaa/ScalaSandbox.git</connection>
-        <developerConnection>scm:git:https://github.com/moustafaalaa/ScalaSandbox.git</developerConnection>
-        <url>https://github.com/moustafaalaa/ScalaSandbox</url>
+        <connection>scm:git:https://github.com/garage-education/scala-starter-parent.git</connection>
+        <developerConnection>scm:git:https://github.com/garage-education/scala-starter-parent.git</developerConnection>
+        <url>https://github.com/garage-education/scala-starter-parent</url>
         <tag>HEAD</tag>
     </scm>
 
     <properties>
         <!--Github repo -->
-        <repo-name>GitHub ScalaSandbox Maven</repo-name>
-        <repo-url>https://maven.pkg.github.com/garage-education/scalasandbox</repo-url>
+        <repo-name>GitHub Scala Starter Parent Maven</repo-name>
+        <repo-url>https://maven.pkg.github.com/garage-education/scala-starter-parent</repo-url>
         <!-- Maven properties -->
         <java-version>1.8</java-version>
         <skipTests>true</skipTests><!-- Skip Scala Unit Tests -->
@@ -487,7 +487,7 @@
                     <artifactId>maven-release-plugin</artifactId>
                     <version>${maven-release-plugin-version}</version>
                     <configuration>
-                        <pomFileName>ScalaSandbox/pom.xml</pomFileName>
+                        <pomFileName>scala-starter-parent/pom.xml</pomFileName>
                     </configuration>
                     <executions>
                         <execution>
