@@ -183,6 +183,13 @@
         </profile>
         <profile>
             <id>Spark-2.11</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <property>
+                    <name>profile.Scala-2.11</name>
+                </property>
+            </activation>
+
             <dependencies>
                 <!-- Spark Libraries-->
                 <dependency>
@@ -236,43 +243,53 @@
                 <version>${scala-version}.${scala-sub-version}</version>
             </dependency>
             <!-- Spark Libraries-->
+
+            <!--Spark Core-->
             <dependency>
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-core_${scala-version}</artifactId>
                 <version>${spark-version}</version>
             </dependency>
+            <!--Spark SQL-->
             <dependency>
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-sql_${scala-version}</artifactId>
                 <version>${spark-version}</version>
             </dependency>
+
+            <!--Spark Hive-->
             <dependency>
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-hive_${scala-version}</artifactId>
                 <version>${spark-version}</version>
             </dependency>
+
             <!--Logging -->
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-api-scala_${scala-version}</artifactId>
                 <version>${log4j-api-scala-version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-api</artifactId>
                 <version>${log4j-version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-core</artifactId>
                 <version>${log4j-version}</version>
             </dependency>
+
             <!-- tests -->
             <dependency>
                 <groupId>org.scalatest</groupId>
                 <artifactId>scalatest_${scala-version}</artifactId>
                 <version>${scala-test-version}</version>
             </dependency>
+
             <!--Spark Testing-->
             <dependency>
                 <groupId>com.holdenkarau</groupId>
