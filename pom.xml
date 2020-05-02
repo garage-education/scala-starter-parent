@@ -453,6 +453,18 @@
                     <artifactId>maven-site-plugin</artifactId>
                     <version>${maven-site-plugin-version}</version>
                 </plugin>
+                <!-- Maven Surefire Report Plugin-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-report-plugin</artifactId>
+                    <version>${maven-surefire-report-plugin-version}</version>
+                </plugin>
+                <!-- Maven Project Info Reports Plugin-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>${project-info-reports.plugin-version}</version>
+                </plugin>
                 <!-- Maven release plugin-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -484,18 +496,6 @@
                             </goals>
                         </execution>
                     </executions>
-                </plugin>
-                <!-- Maven Surefire Report Plugin-->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>${maven-surefire-report-plugin-version}</version>
-                </plugin>
-                <!-- Maven Project Info Reports Plugin-->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>${project-info-reports.plugin-version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

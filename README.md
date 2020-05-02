@@ -1,4 +1,17 @@
-# CICD Development Process (Scala Maven Example) 
+# Scala Sandbox 
+![GitHub Logo](./images/ScalaSandboxLogo.png)
+
+[![License](http://img.shields.io/:license-Apache%202-green.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
+[![Latest Version](https://img.shields.io/github/v/release/garage-education/ScalaSandbox)](https://github.com/garage-education/scalasandbox/releases)
+
+[![Garage Education](./images/elep.png)](https://www.youtube.com/c/GarageEducation)
+
+
+
+## SDLC using Scala Goals
+- Create Scala SDLC.
+- Simplify Scala project bootstrapping.
+- Releasing strategy  
 
 ## Project Strcuture and Initial Code
 
@@ -76,12 +89,12 @@ class MainTest extends FunSuite with Matchers {
 
 This is our initial pom file version include the project pom details
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.example</groupId>
-    <artifactId>ScalaCICD</artifactId>
+    <artifactId>ScalaDemo</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </project>
 
@@ -92,7 +105,7 @@ This is our initial pom file version include the project pom details
 In this part we add scala and scala-test libraries in the dependancy section in pom.xml
 
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -178,26 +191,26 @@ Let's try to package our project using `mvn package`
 
 ### Add scala plugin to allow maven to compile scala code
 
-```
- <build>
-        <plugins>
-            <!-- maven plugin for scala compiler -->
-            <plugin>
-                <!-- https://mvnrepository.com/artifact/net.alchim31.maven/scala-maven-plugin -->
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>scala-maven-plugin</artifactId>
-                <version>${scala-maven-plugin-version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+```xml
+<build>
+    <plugins>
+        <!-- maven plugin for scala compiler -->
+        <plugin>
+            <!-- https://mvnrepository.com/artifact/net.alchim31.maven/scala-maven-plugin -->
+            <groupId>net.alchim31.maven</groupId>
+            <artifactId>scala-maven-plugin</artifactId>
+            <version>${scala-maven-plugin-version}</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>compile</goal>
+                        <goal>testCompile</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
 
 ```
 
@@ -281,22 +294,22 @@ At this stage maven is able to compile scala sources and tests. However, maven s
 
 Let's add maven plugin to run scala unit testing
 
-```
+```xml
 
-   <!-- maven plugin for scala testing engine -->
-            <plugin>
-                <!-- https://mvnrepository.com/artifact/org.scalatest/scalatest-maven-plugin -->
-                <groupId>org.scalatest</groupId>
-                <artifactId>scalatest-maven-plugin</artifactId>
-                <version>${scalatest-maven-plugin-version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!-- maven plugin for scala testing engine -->
+<plugin>
+    <!-- https://mvnrepository.com/artifact/org.scalatest/scalatest-maven-plugin -->
+    <groupId>org.scalatest</groupId>
+    <artifactId>scalatest-maven-plugin</artifactId>
+    <version>${scalatest-maven-plugin-version}</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>test</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
 ```
 
 Let's run and check the unit testing results. We can find that maven is able to run scala unit testing and provide the results.
@@ -385,18 +398,18 @@ As we saw in the previous logs maven still assume our project contains java code
 
 This can be achieved using `maven-compiler-plugin`. 
 
-```
-      <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin-version}</version>
-                <configuration>
-                    <source>${java-version}</source>
-                    <target>${java-version}</target>
-                    <skipMain>true</skipMain> <!-- skip java compile -->
-                    <skip>true</skip> <!-- skip java testCompile -->
-                </configuration>
-        </plugin>
+```xml
+<plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven-compiler-plugin-version}</version>
+          <configuration>
+              <source>${java-version}</source>
+              <target>${java-version}</target>
+              <skipMain>true</skipMain> <!-- skip java compile -->
+              <skip>true</skip> <!-- skip java testCompile -->
+          </configuration>
+</plugin>
 
 ```
 
@@ -495,21 +508,21 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 
 We will add `maven-surefire-plugin` and skip java unit testing execution.
 
-```
-  <!-- maven unit testing plugin-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin-version}/version>
-                <configuration>
-                    <skipTests>true</skipTests>  <!-- skip java unit testing -->
-                </configuration>
-            </plugin>
+```xml
+<!-- maven unit testing plugin-->
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>${maven-surefire-plugin-version}/version>
+    <configuration>
+        <skipTests>true</skipTests>  <!-- skip java unit testing -->
+    </configuration>
+</plugin>
 
 ```
 Let's run again and check the output. We can find that maven stop to execute java unit testing.
 
-```
+```logs
 ╰─ mvn package                                                                                                                                                                             ─╯
 [INFO] Scanning for projects...
 [INFO] 
@@ -578,44 +591,188 @@ All tests passed.
 
 ## Packaging the jar
 
+```xml
+<!-- Maven Assembly for building Jar With Dependencies -->
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-assembly-plugin</artifactId>
+    <version>${maven.assembly.plugin.version}</version>
+    <configuration>
+        <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef> <!-- get the jar with dependencies -->
+        </descriptorRefs>
+        <archive>
+            <manifest>
+                <mainClass>com.gability.labs.cicd</mainClass> <!-- to inform the jar where is the main class demo the manifest without -->  
+            </manifest>
+        </archive>
+        <appendAssemblyId>false</appendAssemblyId> <!-- to remove the descriptor from jar name --> 
+    </configuration>
+    <executions>
+        <execution>
+            <phase>package</phase>
+            <goals>
+                <goal>single</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
 ```
-          <!-- Maven Assembly for building Jar With Dependencies -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>${maven.assembly.plugin.version}</version>
-                <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef> <!-- get the jar with dependencies -->
-                    </descriptorRefs>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.gability.labs.cicd</mainClass> <!-- to inform the jar where is the main class demo the manifest without -->  
-                        </manifest>
-                    </archive>
-                    <appendAssemblyId>false</appendAssemblyId> <!-- to remove the descriptor from jar name --> 
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
+## Add Scala static analysis tools.
+
+### Scoverage
+
+Add code coverage tool for scala that offers statement and branch coverage **Scoverage**
+
+```xml
+
+ <!-- Maven scala coverage plugin -->
+<plugin>
+    <groupId>org.scoverage</groupId>
+    <artifactId>scoverage-maven-plugin</artifactId>
+    <version>${scoverage-plugin-version}</version>
+    <configuration>
+        <highlighting>true</highlighting>
+        <minimumCoverage>${scoverage-minimumCoverage}</minimumCoverage>
+        <failOnMinimumCoverage>true</failOnMinimumCoverage>
+        <additionalForkedProjectProperties>skipTests=false</additionalForkedProjectProperties>
+    </configuration>
+    <executions>
+        <execution>
+            <goals>
+                <goal>check</goal>
+            </goals>
+            <phase>package</phase> <!-- must bind to a phase -->
+        </execution>
+    </executions>
+</plugin>
+```
+### Findbugs
+
+```xml
+<!-- findbugs-maven-plugin -->
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>findbugs-maven-plugin</artifactId>
+    <version>${findbugs-maven-plugin-version}</version>
+    <configuration>
+        <effort>Max</effort>
+        <threshold>High</threshold>
+    </configuration>
+    <executions>
+        <execution>
+            <goals>
+                <goal>check</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+```
+### ScalaStyle
+
+```xml
+  <!-- Scala Style-maven-plugin-->
+<plugin>
+    <groupId>org.scalastyle</groupId>
+    <artifactId>scalastyle-maven-plugin</artifactId>
+    <version>1.0.0</version>
+    <configuration>
+        <verbose>false</verbose>
+        <failOnViolation>true</failOnViolation>
+        <includeTestSourceDirectory>true</includeTestSourceDirectory>
+        <failOnWarning>false</failOnWarning>
+        <sourceDirectory>${project.basedir}/src/main/scala</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/src/test/scala</testSourceDirectory>
+        <outputFile>${project.build.directory}/checkstyle-result.xml</outputFile>
+        <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
+        <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
+    </configuration>
+    <executions>
+        <execution>
+            <goals>
+                <goal>check</goal>
+            </goals>
+        </execution>
+    </executions>
+    <dependencies>
+        <dependency>
+            <groupId>org.scalastyle</groupId>
+            <artifactId>scalastyle-maven-plugin</artifactId>
+            <version>${scalastyle-maven-plugin-version}</version>
+        </dependency>
+    </dependencies>
+</plugin>
 ```
 
-## Add Testing coverage and Sonar to the code and make the build depend on this
+## Maven Reporting
 
+```xml
+<!-- Maven Reporting Site plugin-->
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-site-plugin</artifactId>
+    <version>${maven-site-plugin-version}</version>
+</plugin>
 
-## Jar versioning
+<!-- Maven Surefire Report Plugin-->
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-report-plugin</artifactId>
+    <version>${maven-surefire-report-plugin-version}</version>
+</plugin>
+<!-- Maven Project Info Reports Plugin-->
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-project-info-reports-plugin</artifactId>
+    <version>${project-info-reports.plugin-version}</version>
+</plugin>
+
 ```
-    mvn build-helper:parse-version versions:set -DnewVersion="\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion}"
 
-    mvn --batch-mode release:update-versions
+## Maven Release
 
-    mvn --batch-mode release:prepare release:stage 
+```xml
+
+   <!-- Maven release plugin-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${maven-release-plugin-version}</version>
+                    <configuration>
+                        <pomFileName>ScalaSandbox/pom.xml</pomFileName>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>default</id>
+                            <goals>
+                                <goal>perform</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+```
+
+## Maven Deploy
+
+```xml
+
+  <!-- Maven deploy plugin-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin-version}</version>
+                    <executions>
+                        <execution>
+                            <id>default-deploy</id>
+                            <phase>deploy</phase>
+                            <goals>
+                                <goal>deploy</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
 ```
 
 ## Release cycle 
@@ -623,4 +780,6 @@ Releasing stage (Build Jar (Release with different candidate)) (artifactory or n
    Snapshot
 
 ## Create project template with parent POM 
+
+## Github Actions
 
