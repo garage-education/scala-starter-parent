@@ -1,88 +1,16 @@
-# Scala Sandbox 
+# Scala Starter Parent Project 
 
-<img src="./images/ScalaSandboxLogo.png" height="128"> <a href="https://www.youtube.com/c/GarageEducation"><img src="./images/elep.png" height="128"></a>
+<img src="./images/ScalaParentStarter.png" height="128"> <a href="https://www.youtube.com/c/GarageEducation"><img src="./images/elep.png" height="128"></a>
 
 
 [![License](http://img.shields.io/:license-Apache%202-green.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 [![Latest Version](https://img.shields.io/github/v/release/garage-education/ScalaSandbox)](https://github.com/garage-education/scalasandbox/releases)
 
 
-## SDLC using Scala Goals
+## Scla Parent Starter Project
 - Create Scala SDLC.
 - Simplify Scala project bootstrapping.
 - Releasing strategy  
-
-## Project Strcuture and Initial Code
-
-
-```
-.
-├── pom.xml
-├── pom.xml.versionsBackup
-├── ScalaCICD.iml
-├── src
-│   ├── main
-│   │   ├── resources
-│   │   └── scala
-│   │       └── com
-│   │           └── gability
-│   │               └── labs
-│   │                   └── cicd
-│   │                       └── Main.scala
-│   └── test
-│       └── scala
-│           └── com
-│               └── gability
-│                   └── labs
-│                       └── cicd
-│                           └── MainTest.scala
-
-```
-
-### Main.scala code
-
-This is an scala object class includes simple function which count the number of words from string.
-
-```
-package com.garage.education.labs
-
-object Main extends App {
-  def workCount(s:String): Int = {
-    s match {
-      case str if isEmpty(str) => 0
-      case str => str.split("\\W+").length
-    }
-  }
-  def isEmpty(x: String) = x == null || x.trim.isEmpty
-  println(workCount("Moustafa Alaa"))
-}
-
-
-```
-
-### MainTest.scala code
-
-This is scala class includes unit testing to test `wordCount` function simple unit testing 
-
-```
-package com.garage.education.labs
-import org.scalatest.{FunSuite, Matchers}
-
-class MainTest extends FunSuite with Matchers {
-
-  test("Test wordCount Function with input string") {
-    val inputSentence = "Testing Word Count Func"
-    assert(Main.workCount(inputSentence) == 4)
-  }
-
-  test("Test wordCount Function with null input") {
-    val inputSentence = null
-    assert(Main.workCount(inputSentence) == 0)
-  }
-}
-
-
-```
 
 ### pom.xml
 
@@ -92,9 +20,10 @@ This is our initial pom file version include the project pom details
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.example</groupId>
-    <artifactId>ScalaDemo</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <groupId>com.gability.scala</groupId>
+    <artifactId>scala-starter-parent</artifactId>
+    <version>1.14-SNAPSHOT</version>
+    <packaging>pom</packaging>
 </project>
 
 ```
@@ -107,11 +36,11 @@ In this part we add scala and scala-test libraries in the dependancy section in 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>org.example</groupId>
-    <artifactId>ScalaCICD</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <modelVersion>4.0.0</modelVersion>   
+    <groupId>com.gability.scala</groupId>
+    <artifactId>scala-starter-parent</artifactId>
+    <version>1.14-SNAPSHOT</version>
+    <packaging>pom</packaging>
       <dependencies>
         <!-- tests -->
         <dependency>
@@ -147,45 +76,7 @@ In this part we add scala and scala-test libraries in the dependancy section in 
 
 ```
 
-## Build, Compile, Execute Scala Unit testing, and Package the Jar
-
-Let's try to package our project using `mvn package`
-
-```
-╰─ mvn package                                                                                                                                                                             ─╯
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] -----------------------< org.example:ScalaCICD >------------------------
-[INFO] Building ScalaCICD 1.0.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ ScalaCICD ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] Copying 0 resource
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ ScalaCICD ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ ScalaCICD ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] skip non existing resourceDirectory /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/src/test/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ ScalaCICD ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ ScalaCICD ---
-[INFO] No tests to run.
-[INFO] 
-[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ ScalaCICD ---
-[INFO] Building jar: /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/target/ScalaCICD-1.0.0-SNAPSHOT.jar
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  0.954 s
-[INFO] Finished at: 2020-03-24T00:46:39+01:00
-[INFO] ------------------------------------------------------------------------
-
-```
+## Build, Compile, Execute Scala Unit testing, and Package the Jar using `mvn package`
 
 
 ### Add scala plugin to allow maven to compile scala code
@@ -210,80 +101,6 @@ Let's try to package our project using `mvn package`
         </plugin>
     </plugins>
 </build>
-
-```
-
-Let's compile!
-
-```
-╰─ mvn package                                                                                                                                                                             ─╯
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] -----------------------< org.example:ScalaCICD >------------------------
-[INFO] Building ScalaCICD 1.0.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ ScalaCICD ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] Copying 0 resource
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ ScalaCICD ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] --- scala-maven-plugin:4.3.1:compile (default) @ ScalaCICD ---
-[WARNING]  Expected all dependencies to require Scala version: 2.11.0
-[WARNING]  org.example:ScalaCICD:1.0.0-SNAPSHOT requires scala version: 2.11.8
-[WARNING] Multiple versions of scala libraries detected!
-[INFO] Using incremental compilation using Mixed compile order
-[INFO] Compiler bridge file: /home/moustafa/.sbt/1.0/zinc/org.scala-sbt/org.scala-sbt-compiler-bridge_2.11-1.3.2-bin_2.11.0__52.0-1.3.2_20200115T025827.jar
-[INFO] Compiling 1 Scala source to /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/target/classes ...
-[INFO] Done compiling.
-[INFO] compile in 4.2 s
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ ScalaCICD ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] skip non existing resourceDirectory /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/src/test/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ ScalaCICD ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] --- scala-maven-plugin:4.3.1:testCompile (default) @ ScalaCICD ---
-[WARNING]  Expected all dependencies to require Scala version: 2.11.0
-[WARNING]  org.example:ScalaCICD:1.0.0-SNAPSHOT requires scala version: 2.11.8
-[WARNING] Multiple versions of scala libraries detected!
-[INFO] Using incremental compilation using Mixed compile order
-[INFO] Compiler bridge file: /home/moustafa/.sbt/1.0/zinc/org.scala-sbt/org.scala-sbt-compiler-bridge_2.11-1.3.2-bin_2.11.0__52.0-1.3.2_20200115T025827.jar
-[INFO] Compiling 1 Scala source to /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/target/test-classes ...
-[INFO] Done compiling.
-[INFO] compile in 3.8 s
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ ScalaCICD ---
-[INFO] Surefire report directory: /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/target/surefire-reports
-Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit3/2.12.4/surefire-junit3-2.12.4.pom
-Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit3/2.12.4/surefire-junit3-2.12.4.pom (1.7 kB at 2.9 kB/s)
-Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit3/2.12.4/surefire-junit3-2.12.4.jar
-Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit3/2.12.4/surefire-junit3-2.12.4.jar (26 kB at 201 kB/s)
-
--------------------------------------------------------
- T E S T S
--------------------------------------------------------
-Running com.garage.education.labs.MainTest
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 sec
-
-Results :
-
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
-
-[INFO] 
-[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ ScalaCICD ---
-[INFO] Building jar: /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/target/ScalaCICD-1.0.0-SNAPSHOT.jar
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  11.468 s
-[INFO] Finished at: 2020-03-24T00:51:17+01:00
-[INFO] ------------------------------------------------------------------------
-
 
 ```
 
@@ -313,84 +130,6 @@ Let's add maven plugin to run scala unit testing
 
 Let's run and check the unit testing results. We can find that maven is able to run scala unit testing and provide the results.
 
-```
-╰─ mvn package                                                                                                                                                                             ─╯
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] -----------------------< org.example:ScalaCICD >------------------------
-[INFO] Building ScalaCICD 1.0.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ ScalaCICD ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] Copying 0 resource
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ ScalaCICD ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] --- scala-maven-plugin:4.3.1:compile (default) @ ScalaCICD ---
-[WARNING]  Expected all dependencies to require Scala version: 2.11.0
-[WARNING]  org.example:ScalaCICD:1.0.0-SNAPSHOT requires scala version: 2.11.8
-[WARNING] Multiple versions of scala libraries detected!
-[INFO] Using incremental compilation using Mixed compile order
-[INFO] Compiler bridge file: /home/moustafa/.sbt/1.0/zinc/org.scala-sbt/org.scala-sbt-compiler-bridge_2.11-1.3.2-bin_2.11.0__52.0-1.3.2_20200115T025827.jar
-[INFO] Compiling 1 Scala source to /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/target/classes ...
-[INFO] Done compiling.
-[INFO] compile in 4.1 s
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ ScalaCICD ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] skip non existing resourceDirectory /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/src/test/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ ScalaCICD ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] --- scala-maven-plugin:4.3.1:testCompile (default) @ ScalaCICD ---
-[WARNING]  Expected all dependencies to require Scala version: 2.11.0
-[WARNING]  org.example:ScalaCICD:1.0.0-SNAPSHOT requires scala version: 2.11.8
-[WARNING] Multiple versions of scala libraries detected!
-[INFO] Using incremental compilation using Mixed compile order
-[INFO] Compiler bridge file: /home/moustafa/.sbt/1.0/zinc/org.scala-sbt/org.scala-sbt-compiler-bridge_2.11-1.3.2-bin_2.11.0__52.0-1.3.2_20200115T025827.jar
-[INFO] compile in 0.2 s
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ ScalaCICD ---
-[INFO] Surefire report directory: /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/target/surefire-reports
-
--------------------------------------------------------
- T E S T S
--------------------------------------------------------
-Running com.garage.education.labs.MainTest
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.02 sec
-
-Results :
-
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
-
-[INFO] 
-[INFO] --- scalatest-maven-plugin:2.0.0:test (default) @ ScalaCICD ---
-Discovery starting.
-Discovery completed in 145 milliseconds.
-Run starting. Expected test count is: 2
-MainTest:
-- Test wordCount Function with input string
-- Test wordCount Function with null input
-Run completed in 232 milliseconds.
-Total number of tests run: 2
-Suites: completed 2, aborted 0
-Tests: succeeded 2, failed 0, canceled 0, ignored 0, pending 0
-All tests passed.
-[INFO] 
-[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ ScalaCICD ---
-[INFO] Building jar: /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/target/ScalaCICD-1.0.0-SNAPSHOT.jar
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  7.241 s
-[INFO] Finished at: 2020-03-24T00:57:03+01:00
-[INFO] ------------------------------------------------------------------------
-
-```
-
 ### Skip java compilation for main and test
 
 As we saw in the previous logs maven still assume our project contains java code. So, we will inform maven to skip any compilation for main and test java code. 
@@ -414,96 +153,10 @@ This can be achieved using `maven-compiler-plugin`.
 
 Let's check the output. we can find that maven skips the java comilation for main and test classes `Not compiling main sources` & `Not compiling test sources`
 
-```
-╰─ mvn package                                                                                                                                                                             ─╯
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] -----------------------< org.example:ScalaCICD >------------------------
-[INFO] Building ScalaCICD 1.0.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ ScalaCICD ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] Copying 0 resource
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ ScalaCICD ---
-[INFO] Not compiling main sources
-[INFO] 
-[INFO] --- scala-maven-plugin:4.3.1:compile (default) @ ScalaCICD ---
-[WARNING]  Expected all dependencies to require Scala version: 2.11.0
-[WARNING]  org.example:ScalaCICD:1.0.0-SNAPSHOT requires scala version: 2.11.8
-[WARNING] Multiple versions of scala libraries detected!
-[INFO] Using incremental compilation using Mixed compile order
-[INFO] Compiler bridge file: /home/moustafa/.sbt/1.0/zinc/org.scala-sbt/org.scala-sbt-compiler-bridge_2.11-1.3.2-bin_2.11.0__52.0-1.3.2_20200115T025827.jar
-[INFO] Compiling 1 Scala source to /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/target/classes ...
-[INFO] Done compiling.
-[INFO] compile in 4.7 s
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ ScalaCICD ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] skip non existing resourceDirectory /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/src/test/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ ScalaCICD ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] --- scala-maven-plugin:4.3.1:testCompile (default) @ ScalaCICD ---
-[WARNING]  Expected all dependencies to require Scala version: 2.11.0
-[WARNING]  org.example:ScalaCICD:1.0.0-SNAPSHOT requires scala version: 2.11.8
-[WARNING] Multiple versions of scala libraries detected!
-[INFO] Using incremental compilation using Mixed compile order
-[INFO] Compiler bridge file: /home/moustafa/.sbt/1.0/zinc/org.scala-sbt/org.scala-sbt-compiler-bridge_2.11-1.3.2-bin_2.11.0__52.0-1.3.2_20200115T025827.jar
-[INFO] compile in 0.1 s
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ ScalaCICD ---
-[INFO] Surefire report directory: /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/target/surefire-reports
-
--------------------------------------------------------
- T E S T S
--------------------------------------------------------
-Running com.garage.education.labs.MainTest
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 sec
-
-Results :
-
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
-
-[INFO] 
-[INFO] --- scalatest-maven-plugin:2.0.0:test (default) @ ScalaCICD ---
-Discovery starting.
-Discovery completed in 154 milliseconds.
-Run starting. Expected test count is: 2
-MainTest:
-- Test wordCount Function with input string
-- Test wordCount Function with null input
-Run completed in 239 milliseconds.
-Total number of tests run: 2
-Suites: completed 2, aborted 0
-Tests: succeeded 2, failed 0, canceled 0, ignored 0, pending 0
-All tests passed.
-[INFO] 
-[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ ScalaCICD ---
-[INFO] Building jar: /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/target/ScalaCICD-1.0.0-SNAPSHOT.jar
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  7.847 s
-[INFO] Finished at: 2020-03-24T01:00:29+01:00
-[INFO] ------------------------------------------------------------------------
-
-```
 ### Skip executing java unit testing
 
 We can find the below part in the previous log which indicates that maven is trying to execute java unit testing in our code. Let's try to stop the below part which is not needed in our example.
 
-```
-Running com.garage.education.labs.MainTest
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 sec
-
-Results :
-
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
-
-```
 
 We will add `maven-surefire-plugin` and skip java unit testing execution.
 
@@ -520,73 +173,6 @@ We will add `maven-surefire-plugin` and skip java unit testing execution.
 
 ```
 Let's run again and check the output. We can find that maven stop to execute java unit testing.
-
-```logs
-╰─ mvn package                                                                                                                                                                             ─╯
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] -----------------------< org.example:ScalaCICD >------------------------
-[INFO] Building ScalaCICD 1.0.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ ScalaCICD ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] Copying 0 resource
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ ScalaCICD ---
-[INFO] Not compiling main sources
-[INFO] 
-[INFO] --- scala-maven-plugin:4.3.1:compile (default) @ ScalaCICD ---
-[WARNING]  Expected all dependencies to require Scala version: 2.11.0
-[WARNING]  org.example:ScalaCICD:1.0.0-SNAPSHOT requires scala version: 2.11.8
-[WARNING] Multiple versions of scala libraries detected!
-[INFO] Using incremental compilation using Mixed compile order
-[INFO] Compiler bridge file: /home/moustafa/.sbt/1.0/zinc/org.scala-sbt/org.scala-sbt-compiler-bridge_2.11-1.3.2-bin_2.11.0__52.0-1.3.2_20200115T025827.jar
-[INFO] Compiling 1 Scala source to /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/target/classes ...
-[INFO] Done compiling.
-[INFO] compile in 4.3 s
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ ScalaCICD ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] skip non existing resourceDirectory /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/src/test/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ ScalaCICD ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] --- scala-maven-plugin:4.3.1:testCompile (default) @ ScalaCICD ---
-[WARNING]  Expected all dependencies to require Scala version: 2.11.0
-[WARNING]  org.example:ScalaCICD:1.0.0-SNAPSHOT requires scala version: 2.11.8
-[WARNING] Multiple versions of scala libraries detected!
-[INFO] Using incremental compilation using Mixed compile order
-[INFO] Compiler bridge file: /home/moustafa/.sbt/1.0/zinc/org.scala-sbt/org.scala-sbt-compiler-bridge_2.11-1.3.2-bin_2.11.0__52.0-1.3.2_20200115T025827.jar
-[INFO] compile in 0.2 s
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ ScalaCICD ---
-[INFO] Tests are skipped.
-[INFO] 
-[INFO] --- scalatest-maven-plugin:2.0.0:test (default) @ ScalaCICD ---
-Discovery starting.
-Discovery completed in 146 milliseconds.
-Run starting. Expected test count is: 2
-MainTest:
-- Test wordCount Function with input string
-- Test wordCount Function with null input
-Run completed in 226 milliseconds.
-Total number of tests run: 2
-Suites: completed 2, aborted 0
-Tests: succeeded 2, failed 0, canceled 0, ignored 0, pending 0
-All tests passed.
-[INFO] 
-[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ ScalaCICD ---
-[INFO] Building jar: /media/moustafa/Main_Hard/Learning/Master/CombinedWorkspace/Scala/ScalaCICD/target/ScalaCICD-1.0.0-SNAPSHOT.jar
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  6.783 s
-[INFO] Finished at: 2020-03-24T01:08:14+01:00
-[INFO] ------------------------------------------------------------------------
-
-```
 
 ## Packaging the jar
 
