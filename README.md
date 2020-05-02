@@ -1,11 +1,10 @@
 # Scala Sandbox 
 
-<img src="./images/ScalaSandboxLogo.png" height="128">
+<img src="./images/ScalaSandboxLogo.png" height="128"> <a href="https://www.youtube.com/c/GarageEducation"><img src="./images/elep.png" height="128"></a>
+
 
 [![License](http://img.shields.io/:license-Apache%202-green.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 [![Latest Version](https://img.shields.io/github/v/release/garage-education/ScalaSandbox)](https://github.com/garage-education/scalasandbox/releases)
-
-<a href="https://www.youtube.com/c/GarageEducation"><img src="./images/elep.png" height="128"></a>
 
 
 ## SDLC using Scala Goals
