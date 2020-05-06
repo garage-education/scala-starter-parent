@@ -36,6 +36,7 @@
         <!--Github repo -->
         <repo-name>GitHub Scala Starter Parent Maven</repo-name>
         <repo-url>https://maven.pkg.github.com/garage-education/scala-starter-parent</repo-url>
+        <project.scm.id>github</project.scm.id>
         <!-- Maven properties -->
         <java-version>1.8</java-version>
         <skipTests>true</skipTests><!-- Skip Scala Unit Tests -->
