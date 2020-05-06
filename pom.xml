@@ -59,7 +59,7 @@
         <maven-surefire-report-plugin-version>3.0.0-M4</maven-surefire-report-plugin-version>
         <!-- Scala Project Dependencies -->
         <scala-version>2.11</scala-version>
-        <scala-sub-version>8</scala-sub-version>
+        <scala-sub-version>11</scala-sub-version>
         <scala-test-version>3.1.0</scala-test-version>
         <!--Spark Dependencies-->
         <spark-version>2.4.5</spark-version>
@@ -299,8 +299,6 @@
     </dependencyManagement>
 
     <build>
-        <sourceDirectory>${basedir}/src/main/scala</sourceDirectory>
-        <testSourceDirectory>${basedir}/src/test/scala</testSourceDirectory>
         <pluginManagement>
             <plugins>
                 <!-- maven plugin for scala compiler -->
