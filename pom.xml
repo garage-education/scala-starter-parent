@@ -4,7 +4,7 @@
 
     <groupId>com.gability.scala</groupId>
     <artifactId>scala-starter-parent</artifactId>
-    <version>1.15-SNAPSHOT</version>
+    <version>1.15</version>
     <packaging>pom</packaging>
 
     <distributionManagement>
@@ -29,7 +29,7 @@
         <connection>scm:git:https://github.com/garage-education/scala-starter-parent.git</connection>
         <developerConnection>scm:git:https://github.com/garage-education/scala-starter-parent.git</developerConnection>
         <url>https://github.com/garage-education/scala-starter-parent</url>
-        <tag>HEAD</tag>
+        <tag>scala-starter-parent-1.15</tag>
     </scm>
 
     <properties>
