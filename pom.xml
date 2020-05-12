@@ -300,7 +300,7 @@
                 <plugin>
                     <groupId>net.alchim31.maven</groupId>
                     <artifactId>scala-maven-plugin</artifactId>
-                    <version>${scala-maven-plugin}</version>
+                    <version>${scala-maven-plugin-version}</version>
                     <executions>
                         <execution>
                             <goals>
@@ -381,7 +381,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>findbugs-maven-plugin</artifactId>
-                    <version>${findbugs-maven-plugin}</version>
+                    <version>${findbugs-maven-plugin-version}</version>
                     <configuration>
                         <effort>Max</effort>
                         <threshold>High</threshold>
