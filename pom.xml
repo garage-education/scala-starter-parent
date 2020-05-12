@@ -70,7 +70,9 @@
         <profile>
             <id>Scala-2.11</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <file>
+                    <exists>${basedir}/src/main/scala</exists>
+                </file>
             </activation>
             <dependencies>
                 <!-- Scala Compiler -->
