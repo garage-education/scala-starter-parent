@@ -211,7 +211,6 @@ Let's run again and check the output. We can find that maven stop to execute jav
 Add code coverage tool for scala that offers statement and branch coverage **Scoverage**
 
 ```xml
-
  <!-- Maven scala coverage plugin -->
 <plugin>
     <groupId>org.scoverage</groupId>
@@ -233,8 +232,8 @@ Add code coverage tool for scala that offers statement and branch coverage **Sco
     </executions>
 </plugin>
 ```
-### Findbugs
 
+### Findbugs
 ```xml
 <!-- findbugs-maven-plugin -->
 <plugin>
@@ -254,6 +253,7 @@ Add code coverage tool for scala that offers statement and branch coverage **Sco
     </executions>
 </plugin>
 ```
+
 ### ScalaStyle
 
 ```xml
@@ -314,57 +314,3 @@ Add code coverage tool for scala that offers statement and branch coverage **Sco
 </plugin>
 
 ```
-
-## Maven Release
-
-```xml
-
-   <!-- Maven release plugin-->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>${maven-release-plugin-version}</version>
-                    <configuration>
-                        <pomFileName>ScalaSandbox/pom.xml</pomFileName>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>default</id>
-                            <goals>
-                                <goal>perform</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-```
-
-## Maven Deploy
-
-```xml
-
-  <!-- Maven deploy plugin-->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${maven-deploy-plugin-version}</version>
-                    <executions>
-                        <execution>
-                            <id>default-deploy</id>
-                            <phase>deploy</phase>
-                            <goals>
-                                <goal>deploy</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-```
-
-## Release cycle 
-Releasing stage (Build Jar (Release with different candidate)) (artifactory or nexus server to push the jars or artifacts to this Repos )stagingRepository && snapshotRepository && releaseRepository
-   Snapshot
-
-## Create project template with parent POM 
-
-## Github Actions
-
