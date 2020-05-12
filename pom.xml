@@ -519,6 +519,7 @@
                             <manifest>
                                 <!-- to inform the jar where is the main class demo the manifest without -->
                                 <!--TODO: remove this class and add it properties-->
+                                
                                 <mainClass>com.gability.scala.Main</mainClass>
                             </manifest>
                         </archive>
