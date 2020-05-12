@@ -52,6 +52,7 @@
         <maven-surefire-report-plugin-version>3.0.0-M4</maven-surefire-report-plugin-version>
         <scalac-scapegoat-plugin-version>1.4.4</scalac-scapegoat-plugin-version>
         <maven-report-info-plugin-version>3.0.0</maven-report-info-plugin-version>
+        <build-helper-maven-plugin-version>3.1.0</build-helper-maven-plugin-version>
         <!-- Scala Project Dependencies -->
         <scala-version>2.11</scala-version>
         <scala-sub-version>11</scala-sub-version>
@@ -73,8 +74,7 @@
                 <file>
                     <exists>${basedir}/src/main/scala</exists>
                 </file>
-            </activation>
-            
+            </activation>            
             <dependencies>
                 <!-- Scala Compiler -->
                 <dependency>
