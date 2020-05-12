@@ -74,6 +74,7 @@
                     <exists>${basedir}/src/main/scala</exists>
                 </file>
             </activation>
+            
             <dependencies>
                 <!-- Scala Compiler -->
                 <dependency>
