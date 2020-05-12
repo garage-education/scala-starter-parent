@@ -55,7 +55,7 @@
         <build-helper-maven-plugin-version>3.1.0</build-helper-maven-plugin-version>
         <!-- Scala Project Dependencies -->
         <scala-version>2.11</scala-version>
-        <scala-sub-version>11</scala-sub-version>
+        <scala-sub-version>12</scala-sub-version>
         <scala-test-version>3.1.0</scala-test-version>
         <!--Spark Dependencies-->
         <spark-version>2.4.5</spark-version>
@@ -86,6 +86,11 @@
                     <groupId>org.scalatest</groupId>
                     <artifactId>scalatest_${scala-version}</artifactId>
                     <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.sksamuel.scapegoat</groupId>
+                    <artifactId>scalac-scapegoat-plugin_${scala-version}.${scala-sub-version}
+                    </artifactId>
                 </dependency>
             </dependencies>
             <build>
@@ -294,6 +299,13 @@
                 <groupId>com.holdenkarau</groupId>
                 <artifactId>spark-testing-base_${scala-version}</artifactId>
                 <version>${spark-version}_${spark-testing-base-version}</version>
+            </dependency>
+
+            <!--Scala check style-->
+            <dependency>
+                <groupId>com.sksamuel.scapegoat</groupId>
+                <artifactId>scalac-scapegoat-plugin_${scala-version}.${scala-sub-version}</artifactId>
+                <version>${scalac-scapegoat-plugin-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
