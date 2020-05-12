@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gability.scala</groupId>
@@ -51,6 +52,7 @@
         <project-info-reports.plugin-version>3.0.0</project-info-reports.plugin-version>
         <maven-surefire-report-plugin-version>3.0.0-M4</maven-surefire-report-plugin-version>
         <scalac-scapegoat-plugin-version>1.4.4</scalac-scapegoat-plugin-version>
+        <maven-report-info-plugin-version>3.0.0</maven-report-info-plugin-version>
         <!-- Scala Project Dependencies -->
         <scala-version>2.11</scala-version>
         <scala-sub-version>11</scala-sub-version>
@@ -133,6 +135,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-project-info-reports-plugin</artifactId>
+                        <version>${maven-report-info-plugin-version}</version>
                         <reportSets>
                             <reportSet>
                                 <reports>
@@ -144,6 +147,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-report-plugin</artifactId>
+                        <version>${maven-surefire-report-plugin-version}</version>
                         <reportSets>
                             <reportSet>
                                 <reports>
@@ -319,6 +323,7 @@
                         </compilerPlugins>
                     </configuration>
                 </plugin>
+
                 <!-- maven plugin for scala testing engine -->
                 <plugin>
                     <groupId>org.scalatest</groupId>
@@ -337,6 +342,7 @@
                         </execution>
                     </executions>
                 </plugin>
+
                 <!--Skip java compilation for main and test -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -347,6 +353,7 @@
                         <skip>true</skip>
                     </configuration>
                 </plugin>
+
                 <!-- maven unit testing plugin -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -356,6 +363,7 @@
                         <skipTests>true</skipTests>
                     </configuration>
                 </plugin>
+
                 <!-- Maven scala coverage plugin -->
                 <plugin>
                     <groupId>org.scoverage</groupId>
@@ -376,6 +384,7 @@
                         </execution>
                     </executions>
                 </plugin>
+
                 <!--Maven findbugs plugin -->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -394,12 +403,7 @@
                     </executions>
                 </plugin>
 
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>${maven-site-plugin-version}</version>
-                </plugin>
-
+                <!--build-helper-maven-plugin for add-sources and test sources-->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
@@ -427,6 +431,46 @@
                         </execution>
                     </executions>
                 </plugin>
+
+                <!--scalastyle-maven-plugin-->
+                <plugin>
+                    <groupId>org.scalastyle</groupId>
+                    <artifactId>scalastyle-maven-plugin</artifactId>
+                    <version>${scalastyle-maven-plugin-version}</version>
+                    <configuration>
+                        <verbose>false</verbose>
+                        <failOnViolation>true</failOnViolation>
+                        <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                        <failOnWarning>false</failOnWarning>
+                        <sourceDirectory>${project.basedir}/src/main/scala</sourceDirectory>
+                        <testSourceDirectory>${project.basedir}/src/test/scala</testSourceDirectory>
+                        <outputFile>${project.build.directory}/checkstyle-result.xml</outputFile>
+                        <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
+                        <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.scalastyle</groupId>
+                            <artifactId>scalastyle-maven-plugin</artifactId>
+                            <version>${scalastyle-maven-plugin-version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+
+                <!-- maven site plugin for reporting-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin-version}</version>
+                </plugin>
+
                 <!-- Maven release plugin-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -444,6 +488,7 @@
                         </execution>
                     </executions>
                 </plugin>
+
                 <!-- Maven deploy plugin-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -459,6 +504,7 @@
                         </execution>
                     </executions>
                 </plugin>
+
                 <!-- Maven Assembly for building Jar With Dependencies -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
