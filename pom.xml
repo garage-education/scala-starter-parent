@@ -372,7 +372,7 @@
                     <version>${scoverage-plugin-version}</version>
                     <configuration>
                         <highlighting>true</highlighting>
-                        <minimumCoverage>${scoverage-minimumCoverage}</minimumCoverage>
+                        <minimumCoverage>${scoverage-minimum-threshold}</minimumCoverage>
                         <failOnMinimumCoverage>true</failOnMinimumCoverage>
                         <additionalForkedProjectProperties>skipTests=false</additionalForkedProjectProperties>
                     </configuration>
