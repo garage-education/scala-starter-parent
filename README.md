@@ -314,3 +314,160 @@ Add code coverage tool for scala that offers statement and branch coverage **Sco
 </plugin>
 
 ```
+
+## Configure Parent
+
+1. GitHub Parent repo `scala-starter-parent`
+1. generate github developer tocken and give it access to parent and child token.
+1. Add `.m2/settings.xml`
+
+   ```xml
+    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                            http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+        <activeProfiles>
+            <activeProfile>github</activeProfile>
+        </activeProfiles>
+
+        <profiles>
+            <profile>
+            <id>github</id>
+            <repositories>
+                <repository>
+                <id>github-scala-starter-parent</id>
+                <name>GitHub Garage Education scala-starter-parent Apache Maven Packages</name>
+                <url>https://maven.pkg.github.com/garage-education/scala-starter-parent</url>
+                </repository>
+            </repositories>
+            </profile>
+        </profiles>
+
+        <servers>
+            <server>
+            <id>github-scala-starter-parent</id>
+            <username>YOUR_GITHUB_USERNAME</username>
+            <password>YOUR_GENERATED_TOKEN</password>
+            </server>
+        </servers>
+    </settings>
+   ```
+
+1. Add `distributionManagement` tag to parent
+   ```xml
+   <distributionManagement>
+       <repository>
+           <id>github-scala-starter-parent</id>
+           <name>GitHub scala-starter-parent Apache Maven Packages</name>
+           <url>https://maven.pkg.github.com/garage-education/scala-starter-parent</url>
+       </repository>
+   </distributionManagement>
+   ```
+
+1. Maven Deploy artifact `mvn deploy`
+1. Add SCM tasgs to parent
+   ```xml
+       <scm>
+           <connection>scm:git:https://github.com/garage-education/scala-starter-parent.git</connection>
+           <developerConnection>scm:git:https://github.com/garage-education/scala-starter-parent.git</developerConnection>
+           <url>https://github.com/garage-education/scala-starter-parent</url>
+           <tag>HEAD</tag>
+       </scm>
+   ```
+1.
+1. execute Maven Release `mvn -B release:prepare release:perform` check `<project.scm.id>github-scala-starter-parent</project.scm.id>`
+
+## Configure Child
+
+1. GitHub Parent repo `scala-sandbox`
+1. Add `distributionManagement` tag to parent
+   ```xml
+   <distributionManagement>
+       <repository>
+           <id>github-scala-sandbox</id>
+           <name>GitHub scala-sandbox Apache Maven Packages</name>
+           <url>https://maven.pkg.github.com/garage-education/scala-sandbox</url>
+       </repository>
+   </distributionManagement>
+   ```
+1. Add `.m2/settings.xml`
+
+   ```xml
+        <repositories>
+            ...
+            <repository>
+            <id>github-scala-sandbox</id>
+            <name>GitHub Garage Education scala-starter-parent Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/garage-education/scala-sandbox</url>
+            </repository>
+        </repositories>
+
+        <servers>
+            ...
+            <server>
+            <id>github-scala-sandbox</id>
+            <username>YOUR_GITHUB_USERNAME</username>
+            <password>YOUR_GENERATED_TOKEN</password>
+            </server>
+        </servers>
+   ```
+
+1. Maven Deploy artifact `mvn deploy`
+1. Add SCM tasgs to parent
+   ```xml
+       <scm>
+           <connection>scm:git:https://github.com/garage-education/scala-sandbox.git</connection>
+           <developerConnection>scm:git:https://github.com/garage-education/scala-sandbox.git</developerConnection>
+           <url>https://github.com/garage-education/scala-sandbox</url>
+           <tag>HEAD</tag>
+       </scm>
+   ```
+1.
+1. execute Maven Release `mvn -B release:prepare release:perform` check `<project.scm.id>github-sandbox</project.scm.id>`
+
+## GitHub Actions scala-starter-parent
+
+1. Add GitHub Action pipeline file `.github/workflow/buil.yml`
+
+   ```yml
+   # This workflow will build a Java project with Maven
+   # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+   name: Java CI with Maven
+
+   on: [ push ]
+
+   jobs:
+   build:
+       runs-on: ubuntu-latest
+       steps:
+       - uses: actions/checkout@v2
+       - name: Set up JDK 1.8
+           uses: actions/setup-java@v1
+           with:
+           java-version: 1.8
+       - name: Cache Maven packages
+           uses: actions/cache@v1
+           with:
+           path: ~/.m2
+           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+           restore-keys: ${{ runner.os }}-m2
+       - name: Build with Maven
+           run: mvn -B install
+   publish:
+       runs-on: ubuntu-latest
+       steps:
+       - uses: actions/checkout@v2
+       - name: Set up JDK 1.8
+           uses: actions/setup-java@v1
+           with:
+           java-version: 1.8
+       - name: Publish package
+           run: mvn -B deploy
+           env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+   ```
+
+1) GitHub Child repo `scala-sandbox`
+1) Add SCM tasgs to child

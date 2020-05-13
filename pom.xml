@@ -1,142 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.gability.scala</groupId>
+    <groupId>org.example</groupId>
     <artifactId>scala-starter-parent</artifactId>
-    <version>1.31-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <distributionManagement>
-        <repository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>github</id>
-            <name>${repo-name}</name>
-            <url>${repo-url}</url>
-            <layout>default</layout>
-        </repository>
-    </distributionManagement>
+   <distributionManagement>
+       <repository>
+           <id>github-scala-starter-parent</id>
+           <name>GitHub scala-starter-parent Apache Maven Packages</name>
+           <url>https://maven.pkg.github.com/garage-education/scala-starter-parent</url>
+       </repository>
+   </distributionManagement>
 
     <scm>
-        <connection>scm:git:https://github.com/garage-education/scala-starter-parent.git</connection>
-        <developerConnection>scm:git:https://github.com/garage-education/scala-starter-parent.git</developerConnection>
-        <url>https://github.com/garage-education/scala-starter-parent</url>
-        <tag>HEAD</tag>
+           <connection>scm:git:https://github.com/garage-education/scala-starter-parent.git</connection>
+           <developerConnection>scm:git:https://github.com/garage-education/scala-starter-parent.git</developerConnection>
+           <url>https://github.com/garage-education/scala-starter-parent</url>
+           <tag>HEAD</tag>
     </scm>
 
     <properties>
-        <!--Github repo -->
-        <repo-name>GitHub Scala Starter Parent Maven</repo-name>
-        <repo-url>https://maven.pkg.github.com/garage-education/scala-starter-parent</repo-url>
-        <project.scm.id>github</project.scm.id>
-        <!-- Maven properties -->
-        <java-version>1.8</java-version>
-        <skipTests>true</skipTests><!-- Skip Scala Unit Tests -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <!-- Plugin Versions -->
-        <scala-maven-plugin-version>4.3.1</scala-maven-plugin-version>
+        <scala-library-version>2.11</scala-library-version>
+        <scala-library-subversion>12</scala-library-subversion>
+        <scalatest-version>3.1.1</scalatest-version>
+
+
+        <scala-maven-plugin>4.3.1</scala-maven-plugin>
         <scalatest-maven-plugin-version>2.0.0</scalatest-maven-plugin-version>
-        <scoverage-plugin-version>1.4.1</scoverage-plugin-version>
-        <scoverage-minimum-threshold>80</scoverage-minimum-threshold>
-        <findbugs-maven-plugin-version>3.0.5</findbugs-maven-plugin-version>
-        <scalastyle-maven-plugin-version>1.0.0</scalastyle-maven-plugin-version>
-        <!-- Maven plugins -->
         <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
         <maven-surefire-plugin-version>3.0.0-M4</maven-surefire-plugin-version>
-        <maven-assembly-plugin-version>3.2.0</maven-assembly-plugin-version>
-        <maven-site-plugin-version>3.9.0</maven-site-plugin-version>
-        <maven-release-plugin-version>2.5.3</maven-release-plugin-version>
-        <maven-deploy-plugin-version>2.8.2</maven-deploy-plugin-version>
-        <project-info-reports.plugin-version>3.0.0</project-info-reports.plugin-version>
-        <maven-surefire-report-plugin-version>3.0.0-M4</maven-surefire-report-plugin-version>
+        <scoverage-maven-plugin-version>1.4.1</scoverage-maven-plugin-version>
+        <scoverage-minimum-threshold>80</scoverage-minimum-threshold>
         <scalac-scapegoat-plugin-version>1.4.4</scalac-scapegoat-plugin-version>
+        <findbugs-maven-plugin>3.0.5</findbugs-maven-plugin>
+        <skipTests>true</skipTests>
+        <maven-site-plugin-version>3.9.0</maven-site-plugin-version>
         <maven-report-info-plugin-version>3.0.0</maven-report-info-plugin-version>
         <build-helper-maven-plugin-version>3.1.0</build-helper-maven-plugin-version>
-        <!-- Scala Project Dependencies -->
-        <scala-version>2.11</scala-version>
-        <scala-sub-version>12</scala-sub-version>
-        <scala-test-version>3.1.0</scala-test-version>
-        <!--Spark Dependencies-->
-        <spark-version>2.4.5</spark-version>
-        <spark-testing-base-version>0.14.0</spark-testing-base-version>
-        <!-- Logging -->
-        <log4j-api-scala-version>11.0</log4j-api-scala-version>
-        <log4j-version>2.11.0</log4j-version>
-        <!--json4s -->
-        <json4s-jackson-version>3.5.3</json4s-jackson-version>
     </properties>
-
     <profiles>
         <profile>
             <id>Scala-2.11</id>
             <activation>
-                <file>
-                    <exists>${basedir}/src/main/scala</exists>
-                </file>
-            </activation>            
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <dependencies>
-                <!-- Scala Compiler -->
                 <dependency>
                     <groupId>org.scala-lang</groupId>
                     <artifactId>scala-library</artifactId>
                 </dependency>
-                <!-- tests -->
+
                 <dependency>
                     <groupId>org.scalatest</groupId>
-                    <artifactId>scalatest_${scala-version}</artifactId>
+                    <artifactId>scalatest_${scala-library-version}</artifactId>
                     <scope>test</scope>
                 </dependency>
+
                 <dependency>
                     <groupId>com.sksamuel.scapegoat</groupId>
-                    <artifactId>scalac-scapegoat-plugin_${scala-version}.${scala-sub-version}
+                    <artifactId>scalac-scapegoat-plugin_${scala-library-version}.${scala-library-subversion}
                     </artifactId>
                 </dependency>
             </dependencies>
             <build>
                 <plugins>
+                    <!--maven-scala-plugin-->
                     <plugin>
                         <groupId>net.alchim31.maven</groupId>
                         <artifactId>scala-maven-plugin</artifactId>
                     </plugin>
+
                     <plugin>
                         <groupId>org.scalatest</groupId>
                         <artifactId>scalatest-maven-plugin</artifactId>
                     </plugin>
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
                     </plugin>
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-assembly-plugin</artifactId>
+                        <artifactId>maven-surefire-plugin</artifactId>
                     </plugin>
+
                     <plugin>
                         <groupId>org.scoverage</groupId>
                         <artifactId>scoverage-maven-plugin</artifactId>
                     </plugin>
+
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>findbugs-maven-plugin</artifactId>
                     </plugin>
-                    <plugin>
-                        <groupId>org.scalastyle</groupId>
-                        <artifactId>scalastyle-maven-plugin</artifactId>
-                    </plugin>
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-site-plugin</artifactId>
                     </plugin>
+
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-release-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-deploy-plugin</artifactId>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
                     </plugin>
                 </plugins>
             </build>
+
             <reporting>
                 <plugins>
                     <plugin>
@@ -151,22 +126,7 @@
                             </reportSet>
                         </reportSets>
                     </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-report-plugin</artifactId>
-                        <version>${maven-surefire-report-plugin-version}</version>
-                        <reportSets>
-                            <reportSet>
-                                <reports>
-                                    <report>report-only</report>
-                                </reports>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
-                    <plugin>
-                        <groupId>net.alchim31.maven</groupId>
-                        <artifactId>scala-maven-plugin</artifactId>
-                    </plugin>
+
                     <plugin>
                         <groupId>org.scoverage</groupId>
                         <artifactId>scoverage-maven-plugin</artifactId>
@@ -182,134 +142,40 @@
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>findbugs-maven-plugin</artifactId>
                     </plugin>
+                    <plugin>
+                        <groupId>net.alchim31.maven</groupId>
+                        <artifactId>scala-maven-plugin</artifactId>
+                    </plugin>
                 </plugins>
             </reporting>
-        </profile>
-        <profile>
-            <id>Spark-2.11</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <property>
-                    <name>profile.Scala-2.11</name>
-                </property>
-            </activation>
 
-            <dependencies>
-                <!-- Spark Libraries-->
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-core_${scala-version}</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-sql_${scala-version}</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-hive_${scala-version}</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-                <!--Spark Testing-->
-                <dependency>
-                    <groupId>com.holdenkarau</groupId>
-                    <artifactId>spark-testing-base_${scala-version}</artifactId>
-                    <scope>test</scope>
-                </dependency>
-                <!--Logging -->
-                <dependency>
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-api-scala_${scala-version}</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-api</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-core</artifactId>
-                </dependency>
-            </dependencies>
         </profile>
+
     </profiles>
 
     <dependencyManagement>
         <dependencies>
-            <!--Json-->
-            <dependency>
-                <groupId>org.json4s</groupId>
-                <artifactId>json4s-jackson_${scala-version}</artifactId>
-                <version>${json4s-jackson-version}</version>
-            </dependency>
-            <!-- Scala Compiler -->
             <dependency>
                 <groupId>org.scala-lang</groupId>
                 <artifactId>scala-library</artifactId>
-                <version>${scala-version}.${scala-sub-version}</version>
-            </dependency>
-            <!-- Spark Libraries-->
-
-            <!--Spark Core-->
-            <dependency>
-                <groupId>org.apache.spark</groupId>
-                <artifactId>spark-core_${scala-version}</artifactId>
-                <version>${spark-version}</version>
-            </dependency>
-            <!--Spark SQL-->
-            <dependency>
-                <groupId>org.apache.spark</groupId>
-                <artifactId>spark-sql_${scala-version}</artifactId>
-                <version>${spark-version}</version>
+                <version>${scala-library-version}.${scala-library-subversion}</version>
             </dependency>
 
-            <!--Spark Hive-->
-            <dependency>
-                <groupId>org.apache.spark</groupId>
-                <artifactId>spark-hive_${scala-version}</artifactId>
-                <version>${spark-version}</version>
-            </dependency>
-
-            <!--Logging -->
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-api-scala_${scala-version}</artifactId>
-                <version>${log4j-api-scala-version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-api</artifactId>
-                <version>${log4j-version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-core</artifactId>
-                <version>${log4j-version}</version>
-            </dependency>
-
-            <!-- tests -->
             <dependency>
                 <groupId>org.scalatest</groupId>
-                <artifactId>scalatest_${scala-version}</artifactId>
-                <version>${scala-test-version}</version>
+                <artifactId>scalatest_${scala-library-version}</artifactId>
+                <version>${scalatest-version}</version>
+                <scope>test</scope>
             </dependency>
 
-            <!--Spark Testing-->
-            <dependency>
-                <groupId>com.holdenkarau</groupId>
-                <artifactId>spark-testing-base_${scala-version}</artifactId>
-                <version>${spark-version}_${spark-testing-base-version}</version>
-            </dependency>
-
-            <!--Scala check style-->
             <dependency>
                 <groupId>com.sksamuel.scapegoat</groupId>
-                <artifactId>scalac-scapegoat-plugin_${scala-version}.${scala-sub-version}</artifactId>
+                <artifactId>scalac-scapegoat-plugin_${scala-library-version}.${scala-library-subversion}</artifactId>
                 <version>${scalac-scapegoat-plugin-version}</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
-
     <build>
         <pluginManagement>
             <plugins>
@@ -317,7 +183,7 @@
                 <plugin>
                     <groupId>net.alchim31.maven</groupId>
                     <artifactId>scala-maven-plugin</artifactId>
-                    <version>${scala-maven-plugin-version}</version>
+                    <version>${scala-maven-plugin}</version>
                     <executions>
                         <execution>
                             <goals>
@@ -331,14 +197,15 @@
                         <compilerPlugins>
                             <compilerPlugin>
                                 <groupId>com.sksamuel.scapegoat</groupId>
-                                <artifactId>scalac-scapegoat-plugin_2.11.12</artifactId>
+                                <artifactId>
+                                    scalac-scapegoat-plugin_${scala-library-version}.${scala-library-subversion}
+                                </artifactId>
                                 <version>${scalac-scapegoat-plugin-version}</version>
                             </compilerPlugin>
                         </compilerPlugins>
                     </configuration>
                 </plugin>
 
-                <!-- maven plugin for scala testing engine -->
                 <plugin>
                     <groupId>org.scalatest</groupId>
                     <artifactId>scalatest-maven-plugin</artifactId>
@@ -357,7 +224,6 @@
                     </executions>
                 </plugin>
 
-                <!--Skip java compilation for main and test -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -368,7 +234,6 @@
                     </configuration>
                 </plugin>
 
-                <!-- maven unit testing plugin -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
@@ -378,32 +243,30 @@
                     </configuration>
                 </plugin>
 
-                <!-- Maven scala coverage plugin -->
                 <plugin>
                     <groupId>org.scoverage</groupId>
                     <artifactId>scoverage-maven-plugin</artifactId>
-                    <version>${scoverage-plugin-version}</version>
-                    <configuration>
-                        <highlighting>true</highlighting>
-                        <minimumCoverage>${scoverage-minimum-threshold}</minimumCoverage>
-                        <failOnMinimumCoverage>true</failOnMinimumCoverage>
-                        <additionalForkedProjectProperties>skipTests=false</additionalForkedProjectProperties>
-                    </configuration>
+                    <version>${scoverage-maven-plugin-version}</version>
                     <executions>
                         <execution>
                             <goals>
                                 <goal>check</goal>
                             </goals>
-                            <phase>package</phase> <!-- must bind to a phase -->
+                            <phase>package</phase>
                         </execution>
                     </executions>
+                    <configuration>
+                        <minimumCoverage>${scoverage-minimum-threshold}</minimumCoverage>
+                        <failOnMinimumCoverage>true</failOnMinimumCoverage>
+                        <highlighting>true</highlighting>
+                        <additionalForkedProjectProperties>skipTests=false</additionalForkedProjectProperties>
+                    </configuration>
                 </plugin>
 
-                <!--Maven findbugs plugin -->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>findbugs-maven-plugin</artifactId>
-                    <version>${findbugs-maven-plugin-version}</version>
+                    <version>${findbugs-maven-plugin}</version>
                     <configuration>
                         <effort>Max</effort>
                         <threshold>High</threshold>
@@ -417,7 +280,12 @@
                     </executions>
                 </plugin>
 
-                <!--build-helper-maven-plugin for add-sources and test sources-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin-version}</version>
+                </plugin>
+
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
@@ -445,110 +313,9 @@
                         </execution>
                     </executions>
                 </plugin>
-
-                <!--scalastyle-maven-plugin-->
-                <plugin>
-                    <groupId>org.scalastyle</groupId>
-                    <artifactId>scalastyle-maven-plugin</artifactId>
-                    <version>${scalastyle-maven-plugin-version}</version>
-                    <configuration>
-                        <verbose>false</verbose>
-                        <failOnViolation>true</failOnViolation>
-                        <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                        <failOnWarning>false</failOnWarning>
-                        <sourceDirectory>${project.basedir}/src/main/scala</sourceDirectory>
-                        <testSourceDirectory>${project.basedir}/src/test/scala</testSourceDirectory>
-                        <outputFile>${project.build.directory}/checkstyle-result.xml</outputFile>
-                        <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
-                        <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.scalastyle</groupId>
-                            <artifactId>scalastyle-maven-plugin</artifactId>
-                            <version>${scalastyle-maven-plugin-version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-
-                <!-- maven site plugin for reporting-->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>${maven-site-plugin-version}</version>
-                </plugin>
-
-                <!-- Maven release plugin-->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>${maven-release-plugin-version}</version>
-                    <configuration>
-                        <pomFileName>scala-starter-parent/pom.xml</pomFileName>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>default</id>
-                            <goals>
-                                <goal>perform</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <!-- Maven deploy plugin-->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${maven-deploy-plugin-version}</version>
-                    <executions>
-                        <execution>
-                            <id>default-deploy</id>
-                            <phase>deploy</phase>
-                            <goals>
-                                <goal>deploy</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <!-- Maven Assembly for building Jar With Dependencies -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>${maven-assembly-plugin-version}</version>
-                    <configuration>
-                        <descriptorRefs>
-                            <descriptorRef>jar-with-dependencies</descriptorRef> <!-- get the jar with dependencies -->
-                        </descriptorRefs>
-                        <archive>
-                            <manifest>
-                                <!-- to inform the jar where is the main class demo the manifest without -->
-                                <!--TODO: remove this class and add it properties-->
-                                
-                                <mainClass>com.gability.scala.Main</mainClass>
-                            </manifest>
-                        </archive>
-                        <appendAssemblyId>false</appendAssemblyId> <!-- to remove the descriptor from jar name -->
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>single</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
             </plugins>
         </pluginManagement>
     </build>
+
 
 </project>
