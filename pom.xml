@@ -61,6 +61,8 @@
         <log4j-version>2.11.0</log4j-version>
         <!--json4s -->
         <json4s-jackson-version>3.5.3</json4s-jackson-version>
+
+        <manifest.mainClass>com.gability.scala.Main</manifest.mainClass>
     </properties>
 
     <profiles>
@@ -106,20 +108,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-assembly-plugin</artifactId>
-                        <configuration>
-                            <descriptorRefs>
-                                <descriptorRef>jar-with-dependencies</descriptorRef> <!-- get the jar with dependencies -->
-                            </descriptorRefs>
-                            <archive>
-                                <manifest>
-                                    <!-- to inform the jar where is the main class demo the manifest without -->
-                                    <!--TODO: remove this class and add it properties-->
-
-                                    <mainClass>com.gability.scala.Main</mainClass>
-                                </manifest>
-                            </archive>
-                            <appendAssemblyId>false</appendAssemblyId> <!-- to remove the descriptor from jar name -->
-                        </configuration>
                     </plugin>
                     <plugin>
                         <groupId>org.scoverage</groupId>
@@ -535,6 +523,17 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
                     <version>${maven-assembly-plugin-version}</version>
+                    <configuration>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef> <!-- get the jar with dependencies -->
+                        </descriptorRefs>
+                        <archive>
+                            <manifest>
+                                <mainClass>${manifest.mainClass}</mainClass>
+                            </manifest>
+                        </archive>
+                        <appendAssemblyId>false</appendAssemblyId> <!-- to remove the descriptor from jar name -->
+                    </configuration>
                     <executions>
                         <execution>
                             <phase>package</phase>
