@@ -1,30 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.gability.scala</groupId>
     <artifactId>scala-starter-parent</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-   <distributionManagement>
-       <repository>
-           <id>github-scala-starter-parent</id>
-           <name>GitHub scala-starter-parent Apache Maven Packages</name>
-           <url>https://maven.pkg.github.com/garage-education/scala-starter-parent</url>
-       </repository>
-   </distributionManagement>
-
-    <scm>
-           <connection>scm:git:https://github.com/garage-education/scala-starter-parent.git</connection>
-           <developerConnection>scm:git:https://github.com/garage-education/scala-starter-parent.git</developerConnection>
-           <url>https://github.com/garage-education/scala-starter-parent</url>
-           <tag>HEAD</tag>
-    </scm>
-
     <properties>
+        <project.scm.id>github-scala-starter-parent</project.scm.id>
         <scala-library-version>2.11</scala-library-version>
         <scala-library-subversion>12</scala-library-subversion>
+
         <scalatest-version>3.1.1</scalatest-version>
 
 
@@ -41,6 +29,22 @@
         <maven-report-info-plugin-version>3.0.0</maven-report-info-plugin-version>
         <build-helper-maven-plugin-version>3.1.0</build-helper-maven-plugin-version>
     </properties>
+
+    <scm>
+        <connection>scm:git:https://github.com/garage-education/scala-starter-parent.git</connection>
+        <developerConnection>scm:git:https://github.com/garage-education/scala-starter-parent.git</developerConnection>
+        <url>https://github.com/garage-education/scala-starter-parent</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>github-scala-starter-parent</id>
+            <name>GitHub Garage Education scala-starter-parent Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/garage-education/scala-starter-parent</url>
+        </repository>
+    </distributionManagement>
+
     <profiles>
         <profile>
             <id>Scala-2.11</id>
