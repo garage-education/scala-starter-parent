@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gability.scala</groupId>
@@ -62,7 +63,7 @@
         <log4j-version>2.11.0</log4j-version>
         <!--json4s -->
         <json4s-jackson-version>3.5.3</json4s-jackson-version>
-
+        <pure-config-version>0.12.3</pure-config-version>
         <manifest.mainClass>com.gability.scala.Main</manifest.mainClass>
     </properties>
 
@@ -222,6 +223,11 @@
                     <groupId>org.apache.logging.log4j</groupId>
                     <artifactId>log4j-core</artifactId>
                 </dependency>
+
+                <dependency>
+                    <groupId>com.github.pureconfig</groupId>
+                    <artifactId>pureconfig_2.11</artifactId>
+                </dependency>
             </dependencies>
         </profile>
     </profiles>
@@ -301,6 +307,13 @@
                 <groupId>com.sksamuel.scapegoat</groupId>
                 <artifactId>scalac-scapegoat-plugin_${scala-version}.${scala-sub-version}</artifactId>
                 <version>${scalac-scapegoat-plugin-version}</version>
+            </dependency>
+
+            <!--pure config-->
+            <dependency>
+                <groupId>com.github.pureconfig</groupId>
+                <artifactId>pureconfig_2.11</artifactId>
+                <version>${pure-config-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -511,14 +524,16 @@
                     <version>${maven-assembly-plugin-version}</version>
                     <configuration>
                         <descriptorRefs>
-                            <descriptorRef>jar-with-dependencies</descriptorRef>                            <!-- get the jar with dependencies -->
+                            <descriptorRef>jar-with-dependencies
+                            </descriptorRef>                            <!-- get the jar with dependencies -->
                         </descriptorRefs>
                         <archive>
                             <manifest>
                                 <mainClass>${manifest.mainClass}</mainClass>
                             </manifest>
                         </archive>
-                        <appendAssemblyId>false</appendAssemblyId>                        <!-- to remove the descriptor from jar name -->
+                        <appendAssemblyId>false
+                        </appendAssemblyId>                        <!-- to remove the descriptor from jar name -->
                     </configuration>
                     <executions>
                         <execution>
