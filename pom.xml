@@ -85,11 +85,6 @@
                     <artifactId>scalatest_${scala-version}</artifactId>
                     <scope>test</scope>
                 </dependency>
-                <dependency>
-                    <groupId>com.sksamuel.scapegoat</groupId>
-                    <artifactId>scalac-scapegoat-plugin_${scala-version}.${scala-sub-version}
-                    </artifactId>
-                </dependency>
             </dependencies>
             <build>
                 <plugins>
