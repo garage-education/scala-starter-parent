@@ -326,16 +326,6 @@
                             </goals>
                         </execution>
                     </executions>
-                    <configuration>
-                        <args>-P:scapegoat:dataDir:./target/site/scapegoat</args>
-                        <compilerPlugins>
-                            <compilerPlugin>
-                                <groupId>com.sksamuel.scapegoat</groupId>
-                                <artifactId>scalac-scapegoat-plugin_2.11.12</artifactId>
-                                <version>${scalac-scapegoat-plugin-version}</version>
-                            </compilerPlugin>
-                        </compilerPlugins>
-                    </configuration>
                 </plugin>
 
                 <!-- maven plugin for scala testing engine -->
