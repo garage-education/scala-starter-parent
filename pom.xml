@@ -59,7 +59,7 @@
         <spark-testing-base-version>0.14.0</spark-testing-base-version>
         <!-- Logging -->
         <log4j-api-scala-version>11.0</log4j-api-scala-version>
-        <log4j-version>2.17.1</log4j-version>
+        <log4j-version>2.25.3</log4j-version>
         <!--json4s -->
         <json4s-jackson-version>3.5.3</json4s-jackson-version>
         <pure-config-version>0.12.3</pure-config-version>
